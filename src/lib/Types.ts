@@ -39,7 +39,13 @@ export interface Views {
 }
 
 export type Item =
-	ButtonItem | CameraItem | EmptyItem | DaysSinceItem | EntitiesItem | SpotifyPlayerItem;
+	| ButtonItem
+	| CameraItem
+	| EmptyItem
+	| DaysSinceItem
+	| EntitiesItem
+	| StatusItem
+	| SpotifyPlayerItem;
 
 export interface Section {
 	id?: number;
@@ -211,6 +217,17 @@ export interface EntitiesItem {
 	name?: string;
 	entities?: string[];
 	wildcard?: string;
+}
+
+export interface StatusItem {
+	type: 'status';
+	id: number;
+	name?: string;
+	icon?: string;
+	entities?: string[];
+	wildcard?: string;
+	active_states?: string[];
+	active_label?: string;
 }
 
 export interface DateItem {

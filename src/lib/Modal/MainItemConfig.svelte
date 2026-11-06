@@ -23,6 +23,7 @@
 	import PictureElements from '$lib/Main/PictureElements.svelte';
 	import DaysSince from '$lib/Main/DaysSince.svelte';
 	import SpotifyPlayer from '$lib/Main/SpotifyPlayer.svelte';
+	import StatusCard from '$lib/Main/StatusCard.svelte';
 
 	let { isOpen, sel }: { isOpen: boolean; sel: any } = $props();
 
@@ -120,6 +121,14 @@
 			}
 		},
 		{
+			id: 'status',
+			type: $lang('status_card'),
+			component: StatusCard,
+			props: {
+				sel: selected
+			}
+		},
+		{
 			id: 'camera',
 			type: $lang('camera'),
 			component: Camera,
@@ -200,6 +209,11 @@
 				break;
 			case 'entities':
 				openModal(() => import('$lib/Modal/EntitiesConfig.svelte'), {
+					sel: selected
+				});
+				break;
+			case 'status':
+				openModal(() => import('$lib/Modal/StatusConfig.svelte'), {
 					sel: selected
 				});
 				break;
