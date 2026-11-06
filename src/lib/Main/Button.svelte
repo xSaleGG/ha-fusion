@@ -25,6 +25,12 @@
 	import { openModal } from '$lib/Modals';
 	import Ripple from '$lib/Actions/ripple';
 	import * as parser from 'js-yaml';
+	import {
+		dispatchButtonAction,
+		resolveButtonAction,
+		shouldShowInfoButton,
+		type ButtonActionArea
+	} from './buttonActions';
 
 	let {
 		demo = undefined,
@@ -43,7 +49,6 @@
 	let icon = $derived((sel?.template?.icon && template?.icon?.output) || sel?.icon);
 	let color = $derived((sel?.template?.color && template?.color?.output) || sel?.color);
 	let marquee = $derived(sel?.marquee);
-	let more_info = $derived(sel?.more_info);
 
 	let entity: HassEntity = $state(undefined as any);
 	let contentWidth: number = $state(0);
@@ -186,7 +191,7 @@
 	 * Toggles the state of the specified entity
 	 * using the correct service call...
 	 */
-	function toggle() {
+	function toggle(openLegacyMoreInfo = false) {
 		// For display-only entities, don't do anything when clicked
 		if (isDisplayOnly) {
 			return; // No action for display-only entities
@@ -252,10 +257,7 @@
 			resetLoading = setTimeout(() => {
 				loading = false;
 			}, 20_000);
-		} else if (more_info !== false) {
-			// not in getTogglableService just open modal; call openEntityModal
-			// directly because handleClickEvent would recurse back into toggle
-			// when more_info is false, where the click is a deliberate no-op
+		} else if (openLegacyMoreInfo && sel?.more_info !== false) {
 			openEntityModal();
 		}
 	}
@@ -271,9 +273,9 @@
 	 * handleEvent
 	 * pointerenter | pointerdown | click
 	 */
-	async function handleEvent(event: any) {
+	async function handleEvent(event: any, area: ButtonActionArea = 'icon') {
 		if (event.type === 'click') {
-			await handleClickEvent();
+			await handleClickEvent(area);
 		} else {
 			await handlePointerEvent();
 		}
@@ -283,17 +285,19 @@
 	 * Handle click events
 	 * Opens modal for specified domain
 	 */
-	async function handleClickEvent() {
+	async function handleClickEvent(area: ButtonActionArea) {
 		if ($editMode) {
 			openModal(() => import('$lib/Modal/ButtonConfig.svelte'), {
 				demo: entity_id,
 				sel,
 				sectionName
 			});
-		} else if (more_info === false) {
-			toggle();
 		} else {
-			await openEntityModal();
+			if (isDisplayOnly && sel?.tap_action === undefined) return;
+			await dispatchButtonAction(resolveButtonAction(sel, area), {
+				toggle: () => toggle(sel?.tap_action === undefined && area === 'content'),
+				moreInfo: openEntityModal
+			});
 		}
 	}
 
@@ -682,6 +686,7 @@
 
 <div
 	class="container"
+	class:has-info-button={shouldShowInfoButton(sel)}
 	bind:this={container}
 	data-state={stateOn}
 	data-display-only={isDisplayOnly}
@@ -709,7 +714,7 @@
 		class="left"
 		onclick={(e) => {
 			e.stopPropagation();
-			if (!isDisplayOnly) handleEvent(e);
+			handleEvent(e, 'icon');
 		}}
 		role="button"
 		tabindex={isDisplayOnly ? -1 : 0}
@@ -758,20 +763,18 @@
 			event.stopPropagation();
 			if (isSliding) return;
 			if (!$editMode) {
-				if (!isDisplayOnly) {
-					toggle();
-				}
+				handleClickEvent('content');
 			} else {
-				handleEvent(event);
+				handleEvent(event, 'content');
 			}
 		}}
 		onkeydown={(event) => {
 			if (event.key === 'Enter' || event.key === ' ') {
 				event.preventDefault();
-				if (!$editMode && !isDisplayOnly) {
-					toggle();
+				if (!$editMode) {
+					handleClickEvent('content');
 				} else if ($editMode) {
-					handleEvent(event);
+					handleEvent(event, 'content');
 				}
 			}
 		}}
@@ -817,6 +820,21 @@
 			{/if}
 		</div>
 	</div>
+
+	{#if shouldShowInfoButton(sel)}
+		<button
+			class="info-button"
+			type="button"
+			title={$lang('show_more_info')}
+			aria-label={$lang('show_more_info')}
+			onclick={(event) => {
+				event.stopPropagation();
+				openEntityModal();
+			}}
+		>
+			<Icon icon="ph:info" height="none" width="100%" />
+		</button>
+	{/if}
 
 	<!-- BRIGHTNESS SLIDER OVERLAY -->
 	{#if isLightWithBrightness && (isSliding || targetBrightness !== null)}
@@ -869,6 +887,34 @@
 		justify-content: center;
 		overflow: hidden;
 		padding-right: var(--container-padding);
+	}
+
+	.container.has-info-button .right {
+		padding-right: calc(var(--container-padding) + 2.75rem);
+	}
+
+	.info-button {
+		position: absolute;
+		top: 0.35rem;
+		right: 0.35rem;
+		z-index: 1;
+		display: grid;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0.7rem;
+		border: 0;
+		border-radius: 50%;
+		color: inherit;
+		background: transparent;
+		cursor: pointer;
+		opacity: 0.75;
+	}
+
+	.info-button:hover,
+	.info-button:focus-visible {
+		background: rgba(0, 0, 0, 0.15);
+		opacity: 1;
 	}
 
 	.icon {

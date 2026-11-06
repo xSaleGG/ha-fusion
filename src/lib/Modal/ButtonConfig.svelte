@@ -44,6 +44,9 @@
 	let options = $derived($entityList(''));
 
 	let template = $derived($templates?.[sel?.id]);
+	let canToggle = $derived(
+		!displayOnly && (!!getTogglableService($states?.[entity_id]) || !!template?.service?.output)
+	);
 
 	let servicePlaceholder = $state<string>();
 
@@ -508,20 +511,52 @@
 			>
 		</div>
 
-		<h2>{$lang('show_more_info')}</h2>
+		<h2>{$lang('primary_action')}</h2>
 
 		<div class="button-container">
 			<button
-				class:selected={sel?.more_info !== false}
-				onclick={() => set('more_info')}
+				class:selected={sel?.tap_action === 'toggle' ||
+					(sel?.tap_action === undefined && sel?.more_info === false)}
+				disabled={!canToggle}
+				class:disabled={!canToggle}
+				onclick={() => set('tap_action', 'toggle')}
+				use:Ripple={$ripple}
+			>
+				{$lang('toggle')}
+			</button>
+
+			<button
+				class:selected={sel?.tap_action === 'more-info' ||
+					(sel?.tap_action === undefined && sel?.more_info !== false)}
+				onclick={() => set('tap_action', 'more-info')}
+				use:Ripple={$ripple}
+			>
+				{$lang('show_more_info')}
+			</button>
+
+			<button
+				class:selected={sel?.tap_action === 'none'}
+				onclick={() => set('tap_action', 'none')}
+				use:Ripple={$ripple}
+			>
+				{$lang('no_action')}
+			</button>
+		</div>
+
+		<h2>{$lang('show_info_button')}</h2>
+
+		<div class="button-container">
+			<button
+				class:selected={sel?.show_info_button ?? sel?.more_info !== false}
+				onclick={() => set('show_info_button', true)}
 				use:Ripple={$ripple}
 			>
 				{$lang('yes')}
 			</button>
 
 			<button
-				class:selected={sel?.more_info === false}
-				onclick={() => set('more_info', false)}
+				class:selected={!(sel?.show_info_button ?? sel?.more_info !== false)}
+				onclick={() => set('show_info_button', false)}
 				use:Ripple={$ripple}
 			>
 				{$lang('no')}

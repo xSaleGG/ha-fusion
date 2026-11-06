@@ -84,6 +84,8 @@ export interface EmptyItem {
 	id?: number;
 }
 
+export type ButtonAction = 'toggle' | 'more-info' | 'none';
+
 export interface ButtonItem {
 	type: string;
 	id: number;
@@ -93,6 +95,8 @@ export interface ButtonItem {
 	color?: string;
 	marquee?: boolean;
 	more_info?: boolean;
+	tap_action?: ButtonAction;
+	show_info_button?: boolean;
 	service?: string;
 	state: any;
 	displayOnly?: boolean;
