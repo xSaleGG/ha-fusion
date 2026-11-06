@@ -20,7 +20,7 @@ import { getName, getSelected } from './Utils';
 // hass
 export const connection = writable<Connection>();
 export const config = writable<HassConfig>();
-export const states = writable<HassEntities>();
+export const states = writable<HassEntities>({});
 export const services = writable<HassServices>();
 export const connected = writable<boolean>();
 
