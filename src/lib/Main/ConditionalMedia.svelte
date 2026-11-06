@@ -533,10 +533,10 @@
 	.container {
 		display: grid;
 		overflow: hidden;
-		--container-padding: 0.8rem;
+		--container-padding: var(--theme-card-padding, 0.8rem);
 		position: relative;
 		color: white;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		background-color: var(--theme-button-background-color-off);
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -604,7 +604,7 @@
 		grid-template-columns: min-content auto;
 		grid-auto-flow: row;
 		grid-template-areas: 'left right';
-		border-radius: 0 0 0.65rem 0.65rem;
+		border-radius: 0 0 var(--theme-border-radius, 0.65rem) var(--theme-border-radius, 0.65rem);
 	}
 
 	/* Phone and Tablet (portrait) */

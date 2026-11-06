@@ -161,13 +161,13 @@
 	button {
 		all: unset;
 		background-color: rgba(0, 0, 0, 0.2);
-		border-radius: 0.6rem;
+		border-radius: var(--theme-border-radius, 0.6rem);
 		height: 100%;
 		position: relative;
 		color: white;
 		overflow: hidden;
 		display: grid;
 		box-sizing: border-box;
-		--container-padding: 0.8rem;
+		--container-padding: var(--theme-card-padding, 0.8rem);
 	}
 </style>

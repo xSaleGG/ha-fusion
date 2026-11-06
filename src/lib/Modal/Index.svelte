@@ -272,7 +272,7 @@
 		pointer-events: auto;
 		max-height: 85vh;
 		max-width: 85vw;
-		border-radius: 1.2rem;
+		border-radius: var(--theme-border-radius-modal, 1.2rem);
 		position: relative;
 		box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 		outline: 1px solid rgba(255, 255, 255, 0.25);

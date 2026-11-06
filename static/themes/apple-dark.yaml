@@ -1,0 +1,47 @@
+title: apple-dark
+author: xSaleGG
+attribution: 'Inspired by Apple system colors'
+theme:
+  # Colors and surfaces
+  background-image: none
+  colors-background: '#1C1C1E'
+  colors-text: '#F5F5F7'
+  colors-title: '#F5F5F7'
+  colors-sidebar-background: 'rgba(44, 44, 46, 0.94)'
+  colors-sidebar-border: '1px solid rgba(84, 84, 88, 0.65)'
+  sidebar-divider: '1px solid rgba(84, 84, 88, 0.65)'
+
+  # Typography and sidebar sizing
+  font-family: "'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Inter Variable', system-ui, sans-serif"
+  sizes-sidebar-time: 3.4rem
+  sidebar-font-size: 1rem
+  drawer-font-size: 0.925rem
+
+  # Button states
+  button-background-color-on: '#0066CC'
+  button-background-color-off: 'rgba(118, 118, 128, 0.24)'
+  button-name-color-on: '#FFFFFF'
+  button-name-color-off: '#F5F5F7'
+  button-state-color-on: 'rgba(255, 255, 255, 0.92)'
+  button-state-color-off: '#AEAEB2'
+
+  # Display-only tiles
+  display-only-background-color: '#2C2C2E'
+  display-only-name-color: '#F5F5F7'
+  display-only-state-color: '#AEAEB2'
+
+  # Navigation and modal surfaces
+  drawer-button-background-color: 'rgba(118, 118, 128, 0.24)'
+  navigate-background-color: 'rgba(255, 255, 255, 0.12)'
+  modal-background-color-modal: 'rgba(44, 44, 46, 0.96)'
+
+  # Dashboard spacing and corner radii
+  sidebar-padding: 0 1.4rem
+  sidebar-item-padding: 0.6rem 0.6rem
+  card-padding: 0.72rem
+  border-radius: 0.65rem
+  border-radius-small: 0.4rem
+  border-radius-modal: 1.2rem
+
+  # Browser and app chrome
+  app-color: '#1C1C1E'

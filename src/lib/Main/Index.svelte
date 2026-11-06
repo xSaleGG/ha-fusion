@@ -501,7 +501,7 @@
 		grid-auto-flow: column;
 		grid-auto-columns: 1fr;
 		gap: 2rem;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		outline-offset: 3px;
 	}
 
@@ -510,7 +510,7 @@
 		grid-auto-flow: row;
 		grid-auto-rows: min-content;
 		gap: 1.5rem;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		outline-offset: 3px;
 	}
 
@@ -521,19 +521,19 @@
 	}
 
 	.items {
-		border-radius: 0.6rem;
+		border-radius: var(--theme-border-radius, 0.6rem);
 		outline-offset: -2px;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, 14.5rem);
 		grid-auto-rows: min-content;
 		gap: 0.4rem;
-		border-radius: 0.6rem;
+		border-radius: var(--theme-border-radius, 0.6rem);
 		height: 100%;
 	}
 
 	.item {
 		position: relative;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 	}
 
 	/* Phone and Tablet (portrait) */
@@ -556,7 +556,7 @@
 	.scenes {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		overflow: hidden;
 		min-height: 5rem;
 	}
@@ -572,6 +572,6 @@
 	:global(.sortable-chosen) {
 		outline: 2px dashed rgb(255, 192, 8);
 		outline-offset: -2px;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 	}
 </style>

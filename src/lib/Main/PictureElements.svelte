@@ -94,8 +94,7 @@
 <style>
 	div {
 		width: calc(14.5rem * 2 + 0.4rem);
-		border-radius: 1rem;
-		border-radius: 0.6rem;
+		border-radius: var(--theme-border-radius, 0.6rem);
 		overflow: hidden;
 	}
 </style>

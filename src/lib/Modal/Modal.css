@@ -79,7 +79,7 @@ h2[data-modal] {
 
 #modal .input {
 	padding: 0.7em;
-	border-radius: 0.6em;
+	border-radius: var(--theme-border-radius-small, 0.6em);
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	background-color: rgba(0, 0, 0, 0.2);
 	color: inherit;
@@ -91,7 +91,7 @@ h2[data-modal] {
 /* directly add `data-modal` to every element instead of just input */
 input[data-modal] {
 	padding: 0.7em;
-	border-radius: 0.6em;
+	border-radius: var(--theme-border-radius-small, 0.6em);
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	background-color: rgba(0, 0, 0, 0.2);
 	color: inherit;
@@ -127,7 +127,7 @@ input[data-modal] {
 }
 
 #modal .action {
-	border-radius: 0.4em;
+	border-radius: var(--theme-border-radius-small, 0.4em);
 	border: none;
 	color: inherit;
 	padding: 0.55em 0.9em;

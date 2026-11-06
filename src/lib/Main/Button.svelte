@@ -836,12 +836,12 @@
 		width: 100%;
 		height: 100%;
 		display: grid;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		margin: 0;
 		grid-template-columns: min-content auto;
 		grid-auto-flow: row;
 		grid-template-areas: 'left right';
-		--container-padding: 0.72rem;
+		--container-padding: var(--theme-card-padding, 0.72rem);
 
 		/* fix ripple */
 		transform: translateZ(0);
@@ -934,7 +934,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		overflow: hidden;
 		z-index: 10;
 		pointer-events: none;

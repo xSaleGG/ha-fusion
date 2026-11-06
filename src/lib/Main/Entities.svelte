@@ -95,7 +95,7 @@
 <style>
 	.container {
 		background-color: var(--theme-button-background-color-off);
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
@@ -121,7 +121,7 @@
 		align-items: center;
 		gap: 0.6rem;
 		padding: 0.35rem 0.5rem;
-		border-radius: 0.4rem;
+		border-radius: var(--theme-border-radius-small, 0.4rem);
 	}
 
 	.icon {

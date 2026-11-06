@@ -263,7 +263,7 @@
 		font-family: inherit;
 		width: 100%;
 		height: 100%;
-		border-radius: 0.65rem;
+		border-radius: var(--theme-border-radius, 0.65rem);
 		margin: 0;
 		position: relative;
 		overflow: hidden;
@@ -334,14 +334,14 @@
 		grid-auto-flow: row;
 		grid-template-areas: 'left right';
 		height: 100%;
-		--container-padding: 0.72rem;
+		--container-padding: var(--theme-card-padding, 0.72rem);
 	}
 
 	/* large: content collapses to a bottom bar over the artwork */
 	.large .content {
 		height: 65px;
 		align-self: end;
-		border-radius: 0 0 0.65rem 0.65rem;
+		border-radius: 0 0 var(--theme-border-radius, 0.65rem) var(--theme-border-radius, 0.65rem);
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -349,7 +349,7 @@
 		background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
-		--container-padding: 0.8rem;
+		--container-padding: var(--theme-card-padding, 0.8rem);
 	}
 
 	.left {
