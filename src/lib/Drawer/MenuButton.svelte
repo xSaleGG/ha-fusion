@@ -53,7 +53,7 @@
 		right: 2rem;
 		width: 2.7rem;
 		background-color: transparent;
-		color: white;
+		color: var(--theme-colors-title, var(--theme-colors-text, white));
 		border: none;
 		z-index: 1;
 		cursor: pointer;

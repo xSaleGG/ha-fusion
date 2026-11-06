@@ -35,7 +35,7 @@
 		}
 	});
 
-	const borderStyle = '3px solid white';
+	const borderStyle = '3px solid var(--theme-colors-title, var(--theme-colors-text, white))';
 
 	async function handleDragFinalize(newItems: any[]) {
 		$dashboard.views = newItems;
@@ -180,7 +180,7 @@
 	}
 
 	#navigation button {
-		color: white;
+		color: var(--theme-colors-title, var(--theme-colors-text, white));
 		background: none;
 		border: none;
 		font-weight: 700;
@@ -211,7 +211,7 @@
 		position: absolute;
 		bottom: 0rem;
 		height: 3px;
-		background: white;
+		background: var(--theme-colors-title, var(--theme-colors-text, white));
 	}
 
 	/* Phone and Tablet (portrait) */

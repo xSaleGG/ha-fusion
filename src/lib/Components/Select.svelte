@@ -282,7 +282,7 @@
 		margin-top: -1px;
 		background: none;
 		border: none;
-		color: lightgrey;
+		color: var(--theme-button-state-color-off, lightgrey);
 	}
 	.chevron {
 		right: 0;
@@ -299,7 +299,7 @@
 	.wrapper {
 		margin-top: 0.2rem;
 		position: relative;
-		background-color: #1d1b18;
+		background-color: var(--theme-colors-background, #1d1b18);
 		border-radius: 0.6rem;
 		overflow: hidden;
 	}
@@ -307,10 +307,10 @@
 		all: unset;
 	}
 	.highlighted {
-		background-color: rgba(255, 255, 255, 0.05);
+		background-color: var(--theme-navigate-background-color, rgba(255, 255, 255, 0.05));
 	}
 	.selected {
-		background-color: rgba(255, 255, 255, 0.1);
+		background-color: var(--theme-navigate-background-color, rgba(255, 255, 255, 0.1));
 	}
 	.item {
 		display: flex;

@@ -3,7 +3,7 @@ author: xSaleGG
 attribution: 'Inspired by Apple system colors'
 theme:
   # Colors and surfaces
-  background-image: none
+  background-image: 'linear-gradient(#F5F5F7, #F5F5F7)'
   colors-background: '#F5F5F7'
   colors-text: '#1D1D1F'
   colors-title: '#1D1D1F'

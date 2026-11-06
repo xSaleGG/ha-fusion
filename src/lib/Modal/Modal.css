@@ -3,7 +3,7 @@
  */
 
 :root {
-	--border-color-button: 1px solid rgb(100 100 100);
+	--border-color-button: var(--theme-colors-sidebar-border, 1px solid rgb(100 100 100));
 }
 
 #modal h1 {
@@ -37,8 +37,8 @@ h2[data-modal] {
 }
 
 #modal .button-container button {
-	background-color: rgba(0, 0, 0, 0.2);
-	color: white;
+	background-color: var(--theme-button-background-color-off, rgba(0, 0, 0, 0.2));
+	color: var(--theme-button-name-color-off, white);
 	width: auto;
 	border: none;
 	cursor: pointer;
@@ -74,15 +74,15 @@ h2[data-modal] {
 }
 
 #modal .button-container .selected {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: var(--theme-navigate-background-color, rgba(255, 255, 255, 0.1));
 }
 
 #modal .input {
 	padding: 0.7em;
 	border-radius: var(--theme-border-radius-small, 0.6em);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	background-color: rgba(0, 0, 0, 0.2);
-	color: inherit;
+	border: var(--theme-colors-sidebar-border, 1px solid rgba(255, 255, 255, 0.3));
+	background-color: var(--theme-button-background-color-off, rgba(0, 0, 0, 0.2));
+	color: var(--theme-colors-text, inherit);
 	font-family: inherit;
 	width: 100%;
 	font-size: inherit;
@@ -92,16 +92,16 @@ h2[data-modal] {
 input[data-modal] {
 	padding: 0.7em;
 	border-radius: var(--theme-border-radius-small, 0.6em);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	background-color: rgba(0, 0, 0, 0.2);
-	color: inherit;
+	border: var(--theme-colors-sidebar-border, 1px solid rgba(255, 255, 255, 0.3));
+	background-color: var(--theme-button-background-color-off, rgba(0, 0, 0, 0.2));
+	color: var(--theme-colors-text, inherit);
 	font-family: inherit;
 	width: 100%;
 	font-size: inherit;
 }
 
 #modal .input::placeholder {
-	color: rgba(255, 255, 255, 0.3);
+	color: var(--theme-button-state-color-off, rgba(255, 255, 255, 0.3));
 	opacity: 1;
 }
 
@@ -144,7 +144,7 @@ input[data-modal] {
 
 #modal .clear > button {
 	background: none;
-	color: lightgrey;
+	color: var(--theme-button-state-color-off, lightgrey);
 	font-size: 1.3rem;
 	border: none;
 	cursor: pointer;
@@ -165,8 +165,8 @@ input[data-modal] {
 #modal .icon-gallery {
 	padding: 0 1rem;
 	border-radius: 0.6em;
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	background-color: rgba(0, 0, 0, 0.2);
+	border: var(--theme-colors-sidebar-border, 1px solid rgba(255, 255, 255, 0.3));
+	background-color: var(--theme-button-background-color-off, rgba(0, 0, 0, 0.2));
 	color: inherit;
 	font-size: inherit;
 	cursor: pointer;

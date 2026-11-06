@@ -155,9 +155,14 @@
 							<div
 								class="image-area"
 								style:background-image="url('{base}/themes/{theme?.title}_thumbnail.webp')"
+								style:background-color={theme?.theme?.['colors-background'] || '#212122'}
 							></div>
 
-							<div class="description-area">
+							<div
+								class="description-area"
+								style:background-color={theme?.theme?.['colors-background'] || '#212122'}
+								style:color={theme?.theme?.['colors-text'] || 'white'}
+							>
 								<div class="description">
 									<div class="name">{theme?.title}</div>
 									<div class="author">{theme?.author}</div>
